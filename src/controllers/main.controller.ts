@@ -1,5 +1,5 @@
 import { Client } from "discord.js";
-import { PlayService } from '../services/play.service'
+import { PlayService } from '../use-cases/play'
 import { inject, injectable } from "tsyringe";
 import { ServerQueue } from "../entities/server-queue.entity";
 

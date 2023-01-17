@@ -1,4 +1,4 @@
 import { container } from 'tsyringe'
-import { PlayService } from '../services/play.service'
+import { PlayService } from '../use-cases/play'
 
 container.registerSingleton<PlayService>('PlayService', PlayService)

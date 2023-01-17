@@ -4,7 +4,7 @@ import { Client } from 'discord.js'
 import { clientOptions } from './config'
 import { MainController } from './controllers/main.controller'
 import './modules/index'
-import { PlayService } from './services/play.service'
+import { PlayService } from './use-cases/play'
 
 
 config()
