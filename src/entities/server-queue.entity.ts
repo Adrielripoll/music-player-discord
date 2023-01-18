@@ -1,4 +1,4 @@
-import { IServerQueueProps } from '../interfaces/server-queue-props.interface'
+import { IServerQueueProps } from '../interfaces/entities/server-queue-props.interface'
 
 export class ServerQueue {
     private props: Partial<IServerQueueProps>

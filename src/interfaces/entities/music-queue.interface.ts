@@ -1,4 +1,4 @@
-import { IMusicProps } from "./music.interface"
+import { IMusicProps } from "./music-props.interface"
 
 export interface IMusicQueue{
     add: (props: IMusicProps) => void,

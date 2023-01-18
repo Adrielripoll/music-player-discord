@@ -7,10 +7,10 @@ import { ServerQueue } from "../entities/server-queue.entity";
 import { TextChannel } from "../entities/text-channel.entity";
 import { GuildServer as Guild } from '../entities/guild.entity'
 import { PlayService } from "../services/play.service";
+import { IUseCase } from "../interfaces/use-cases/use-case.interface";
 import ytdl from 'ytdl-core'
 
-@injectable()
-export class Play {
+export class Play implements IUseCase<Promise<Message<true | false> | undefined>>{
     async execute(message: Message<boolean>, serverQueue: ServerQueue){
         const args = message.content.split(" ")
         const channel = message.member?.voice.channel
@@ -37,7 +37,7 @@ export class Play {
             const musicQueue = new MusicQueue()
             
             musicQueue.add(music.value)
-            
+
             serverQueue.config({
                 textChannel: new TextChannel(message.channel),
                 voiceChannel,
@@ -46,10 +46,10 @@ export class Play {
                 playing: true,
                 volume: 5
             })
-
+            
             try{
                 voiceChannel.join()
-                PlayService.execute(serverQueue, music.value)
+                PlayService.execute(serverQueue)
             }catch(error){
                 serverQueue.delete()
                 return message.channel.send(error!)

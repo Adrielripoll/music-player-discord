@@ -1,26 +1,22 @@
 import { VoiceBasedChannel } from "discord.js";
-import { 
-    joinVoiceChannel, 
-    VoiceConnection, 
-    createAudioPlayer, 
-    createAudioResource,
-    AudioPlayerState
-} from '@discordjs/voice'
-import { IVoiceChannel } from '../interfaces/voice-channel.interface'
-import { IMusicProps } from "../interfaces/music.interface";
-import ytdl from 'ytdl-core'
+import { joinVoiceChannel, VoiceConnection } from '@discordjs/voice'
+import { IVoiceChannel } from '../interfaces/entities/voice-channel.interface'
 
+export class VoiceChannel implements IVoiceChannel {
 
-export class VoiceChannel implements IVoiceChannel{
     private voiceChannel: VoiceBasedChannel
-    private connection?: VoiceConnection
+    private voiceConnection: VoiceConnection | null = null
 
     constructor(voiceChannel: VoiceBasedChannel){
         this.voiceChannel = voiceChannel
     }
 
-    public get value(): VoiceBasedChannel {
+    public get channel(): VoiceBasedChannel {
         return this.voiceChannel
+    }
+
+    public get connection(): VoiceConnection {
+        return this.connection
     }
 
     public join(): VoiceConnection {
@@ -29,7 +25,7 @@ export class VoiceChannel implements IVoiceChannel{
             guildId: this.voiceChannel.guildId,
             adapterCreator: this.voiceChannel.guild.voiceAdapterCreator
         })
-        this.connection = connection
+        this.voiceConnection = connection
         return connection
     }
 
@@ -40,19 +36,5 @@ export class VoiceChannel implements IVoiceChannel{
         }
 
         this.connection.disconnect()
-    }
-
-    public play(musics: IMusicProps[]){
-        if(!this.connection){
-            throw new Error('Nenhuma conexão pré-estabelecida')
-        }
-
-        const player = createAudioPlayer()
-        const resource = createAudioResource(ytdl(musics[0].url))   
-
-        player.play(resource)
-        player.state
-
-        this.connection.subscribe(player)
     }
 }

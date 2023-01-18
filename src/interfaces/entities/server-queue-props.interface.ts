@@ -1,4 +1,4 @@
-import { IVoiceChannel } from "./voice-channel.interface"
+import { IVoiceChannel } from "../voice-channel.interface"
 import { ITextChannel } from "./text-channel.interface"
 import { IMusicQueue } from "./music-queue.interface"
 import { IGuild } from './guild.interface'

@@ -1,5 +1,5 @@
 import { Channel } from "discord.js"
-import { ITextChannel } from '../interfaces/text-channel.interface'
+import { ITextChannel } from '../interfaces/entities/text-channel.interface'
 
 export class TextChannel implements ITextChannel {
 

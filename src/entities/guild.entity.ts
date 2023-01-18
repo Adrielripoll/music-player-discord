@@ -1,4 +1,4 @@
-import { IGuild } from "../interfaces/guild.interface";
+import { IGuild } from "../interfaces/entities/guild.interface";
 import { Guild } from "discord.js";
 
 export class GuildServer implements IGuild {

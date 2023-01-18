@@ -1,5 +1,5 @@
-import { IMusicQueue } from "../interfaces/music-queue.interface"
-import { IMusicProps  } from '../interfaces/music.interface'
+import { IMusicQueue } from "../interfaces/entities/music-queue.interface"
+import { IMusicProps  } from '../interfaces/entities/music-props.interface'
 
 export class MusicQueue implements IMusicQueue {
     
@@ -18,7 +18,7 @@ export class MusicQueue implements IMusicQueue {
     }
 
     public remove(){
-        this.queue.pop()
+        this.queue.shift()
     }
 
     public removeOneById(id: string){

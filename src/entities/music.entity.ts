@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto'
-import { IMusicProps } from '../interfaces/music.interface'
+import { IMusicProps } from '../interfaces/entities/music-props.interface'
 
 export class Music {
     private props: IMusicProps
